@@ -9,6 +9,9 @@ const commandButton = document.querySelector("#commandButton");
 const commandPalette = document.querySelector("#commandPalette");
 const commandInput = document.querySelector("#commandInput");
 const commandList = document.querySelector("#commandList");
+const brandButton = document.querySelector("#brandButton");
+const brandModal = document.querySelector("#brandModal");
+const brandClose = document.querySelector("#brandClose");
 const toast = document.querySelector("#toast");
 
 const labModes = {
@@ -72,6 +75,20 @@ function togglePalette(force) {
   if (shouldOpen) {
     renderCommands("");
     window.setTimeout(() => commandInput.focus(), 20);
+  }
+}
+
+function toggleBrandModal(force) {
+  const wasOpen = body.classList.contains("brand-open");
+  const shouldOpen = typeof force === "boolean" ? force : !body.classList.contains("brand-open");
+  body.classList.toggle("brand-open", shouldOpen);
+  brandModal.setAttribute("aria-hidden", String(!shouldOpen));
+  if (shouldOpen) {
+    toggleMenu(false);
+    togglePalette(false);
+    window.setTimeout(() => brandClose.focus(), 20);
+  } else if (wasOpen) {
+    brandButton.focus();
   }
 }
 
@@ -280,6 +297,12 @@ commandList.addEventListener("click", (event) => {
   if (item) goToTarget(item.dataset.target);
 });
 
+brandButton.addEventListener("click", () => toggleBrandModal());
+brandClose.addEventListener("click", () => toggleBrandModal(false));
+brandModal.addEventListener("click", (event) => {
+  if (event.target === brandModal) toggleBrandModal(false);
+});
+
 document.addEventListener("keydown", (event) => {
   const paletteShortcut = (event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k";
   if (paletteShortcut) {
@@ -289,6 +312,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     togglePalette(false);
     toggleMenu(false);
+    toggleBrandModal(false);
   }
 });
 

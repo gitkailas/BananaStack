@@ -16,13 +16,22 @@
     <div class="scroll-progress" aria-hidden="true"></div>
 
     <header class="site-header" data-elevated="false">
-      <a class="brand" href="#top" aria-label="BananaStack home">
-        <span class="brand-mark">BS</span>
+      <button
+        class="brand"
+        id="brandButton"
+        type="button"
+        aria-label="Open BananaStack brand definition"
+        aria-haspopup="dialog"
+        aria-controls="brandModal"
+      >
+        <span class="brand-mark">
+          <img src="bananastack_logo.png" alt="" />
+        </span>
         <span class="brand-copy">
           <strong>BananaStack</strong>
           <small>Smart IT Studio</small>
         </span>
-      </a>
+      </button>
 
       <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#services">Services</a>
@@ -256,6 +265,56 @@
       <div class="command-box" role="dialog" aria-modal="true" aria-label="Command palette">
         <input id="commandInput" type="search" placeholder="Jump to services, StackLab, process, contact..." />
         <div class="command-list" id="commandList"></div>
+      </div>
+    </div>
+
+    <div class="brand-modal" id="brandModal" aria-hidden="true">
+      <div class="brand-card" role="dialog" aria-modal="true" aria-labelledby="brandModalTitle">
+        <button class="brand-close" id="brandClose" type="button" aria-label="Close brand definition">×</button>
+        <img
+          class="brand-card-logo"
+          src="bananastack_logo.png"
+          alt="BananaStack logo with a curved amber mark above stacked indigo and charcoal bars"
+        />
+        <div class="brand-card-copy">
+          <p class="eyebrow">Brand definition</p>
+          <h2 id="brandModalTitle">BananaStack</h2>
+          <p>
+            BananaStack is positioned as a smart IT studio, not a food or lifestyle brand. The name pairs a bright,
+            memorable banana cue with the layered software stack behind apps, AI media, automation, networks, and
+            infrastructure.
+          </p>
+        </div>
+        <div class="brand-definition-grid" aria-label="BananaStack color meanings">
+          <article>
+            <span class="color-swatch amber"></span>
+            <h3>Amber gold</h3>
+            <p>#FFC94D to #F5A623. The Banana energy color, used as a sharp accent for warmth, motion, and attention.</p>
+          </article>
+          <article>
+            <span class="color-swatch indigo"></span>
+            <h3>Deep indigo</h3>
+            <p>#5B4FE0 to #3B2FA8. The technology color, signaling software systems, AI work, and modern infrastructure.</p>
+          </article>
+          <article>
+            <span class="color-swatch charcoal"></span>
+            <h3>Charcoal</h3>
+            <p>#1B1D29. The serious studio tone for the wordmark and core structure, keeping the brand grounded.</p>
+          </article>
+          <article>
+            <span class="color-swatch muted"></span>
+            <h3>Muted gray</h3>
+            <p>#6B6F80. A secondary color for supporting text, taglines, and quiet interface details.</p>
+          </article>
+        </div>
+        <div class="mark-story">
+          <h3>Logo mark</h3>
+          <p>
+            The mark uses three stacked curved bars: the top curve nods to the Banana name, while the lower bars
+            represent layers of services, infrastructure, and delivery systems. It reads as an abstract tech monogram
+            instead of a literal fruit.
+          </p>
+        </div>
       </div>
     </div>
 
